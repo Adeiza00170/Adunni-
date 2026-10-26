@@ -1,20 +1,485 @@
-<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>For You ❤️</title>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>For My Special Adunni ❤️</title>
+
 <style>
-*{box-sizing:border-box}body{margin:0;font-family:Georgia,serif;background:linear-gradient(135deg,#12000a,#3b071b,#16000d);color:#fff;min-height:100vh;display:grid;place-items:center;overflow:hidden}
-.card{width:min(92%,520px);padding:34px 26px;text-align:center;border:1px solid #ffffff25;border-radius:28px;background:#ffffff0d;backdrop-filter:blur(12px);box-shadow:0 20px 80px #0008}
-.heart{font-size:58px;animation:pulse 1.4s infinite}.small{opacity:.75;font-family:Arial,sans-serif}.message{font-size:20px;line-height:1.7}.hide{display:none}button{border:0;border-radius:999px;padding:14px 24px;background:#fff;color:#7b1238;font-weight:700;font-size:16px;cursor:pointer;margin-top:15px}
-.float{position:fixed;bottom:-30px;font-size:20px;animation:up 7s linear infinite;opacity:.5}@keyframes pulse{50%{transform:scale(1.12)}}@keyframes up{to{transform:translateY(-110vh);opacity:0}}
-</style></head><body>
-<div class="card">
-<div id="start"><div class="heart">❤️</div><h1>Hey, Adunni...</h1><p class="small">I made this little page for you.</p><button onclick="openLetter()">Open it 💌</button></div>
-<div id="letter" class="hide"><div class="heart">🥹❤️</div><h1>A little something from me</h1>
-<div class="message">I know things between us haven't gone the way I hoped, and I know I made mistakes too. I'm genuinely sorry for the moments I hurt you, misunderstood you, or made things harder than they needed to be.<br><br>
-I'm not sending this to pressure you or force anything. I just wanted you to know that I still care about you and I truly wish you peace, happiness and good things.<br><br>
-And yes... I know I can be dramatic sometimes 😂. Consider this my official application to be forgiven. No interview required. 😭❤️<br><br>
-Whatever happens from here, thank you for the memories and for being someone who once meant — and still means — a lot to me.</div>
-<button onclick="surprise()">One last thing 😂</button><p id="surprise" class="hide message">If you smiled even a little, I'll take that as a small victory. 😂❤️<br><span class="small">No pressure. Just wanted to make you smile.</span></p></div>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Georgia, serif;
+    background: linear-gradient(135deg, #26001f, #800040, #e75480);
+    color: white;
+    text-align: center;
+    overflow-x: hidden;
+}
+
+section {
+    padding: 55px 20px;
+    position: relative;
+}
+
+.hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(circle, #b00055, #26001f);
+}
+
+h1 {
+    font-size: clamp(35px, 9vw, 55px);
+    color: #ffd6e7;
+    margin: 20px 0;
+    text-shadow: 0 0 20px #ff69a6;
+}
+
+h2 {
+    color: #ffd6e7;
+    margin-bottom: 20px;
+    font-size: 29px;
+}
+
+p {
+    font-size: 17px;
+    line-height: 1.9;
+    margin: 15px auto;
+    max-width: 600px;
+}
+
+.big-heart {
+    font-size: 85px;
+    animation: heartbeat 1.2s infinite;
+}
+
+button {
+    background: linear-gradient(45deg, #ff2678, #ff76ac);
+    color: white;
+    border: 1px solid #ffc0d9;
+    padding: 15px 23px;
+    border-radius: 40px;
+    font-size: 16px;
+    margin: 12px 5px;
+    cursor: pointer;
+    box-shadow: 0 5px 20px #ff267855;
+}
+
+button:active {
+    transform: scale(.96);
+}
+
+.card {
+    background: rgba(255, 255, 255, .09);
+    border: 1px solid rgba(255, 255, 255, .25);
+    border-radius: 25px;
+    padding: 25px 20px;
+    max-width: 650px;
+    margin: 25px auto;
+    box-shadow: 0 10px 35px #16001055;
+    backdrop-filter: blur(8px);
+}
+
+.love-letter {
+    text-align: left;
+    white-space: normal;
+}
+
+.love-letter p {
+    margin-bottom: 20px;
+}
+
+.hidden-message {
+    display: none;
+    margin: 20px auto;
+    max-width: 550px;
+    padding: 22px;
+    background: #fff0f6;
+    color: #800040;
+    border-radius: 20px;
+    line-height: 1.9;
+    animation: appear .6s ease;
+}
+
+.hidden-message p {
+    color: #800040;
+}
+
+.pink-section {
+    background: linear-gradient(180deg, #800040, #4a002c);
+}
+
+.white-section {
+    background: linear-gradient(180deg, #4a002c, #25001c);
+}
+
+.footer {
+    padding: 35px 15px;
+    color: #ffd6e7;
+}
+
+.floating-heart {
+    position: fixed;
+    bottom: -40px;
+    z-index: 10;
+    pointer-events: none;
+    animation: floatUp 7s linear forwards;
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+}
+
+@keyframes floatUp {
+    to {
+        transform: translateY(-115vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: .01ms !important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<section class="hero">
+    <div class="big-heart">❤️</div>
+
+    <p>✨ A little something from my heart, especially for ✨</p>
+
+    <h1>My Dearest Adunni 💖</h1>
+
+    <p>
+        If I could put my feelings into a thousand words,
+        I would still need a thousand more to tell you
+        how special you are to me. 🥹💕
+    </p>
+
+    <button onclick="document.getElementById('letter').scrollIntoView({behavior:'smooth'})">
+        Open My Heart 💌
+    </button>
+
+    <p>🌹 Made with love, just for you 🌹</p>
+</section>
+
+<section id="letter" class="pink-section">
+    <h2>💌 A Letter From My Heart</h2>
+
+    <div class="card love-letter">
+        <p>My dearest Adunni, ❤️🥹</p>
+
+        <p>
+            I don't even know where to begin, because there are
+            so many things I wish I could tell you.
+            But if there is one thing I want you to understand,
+            it is that you mean a lot to me. 💖
+        </p>
+
+        <p>
+            Sometimes, we make mistakes. Sometimes, we misunderstand
+            each other. Sometimes, our words and actions hurt the
+            people we never intended to hurt.
+            Looking back, I know there are things I could have
+            handled better, and for the moments I hurt you,
+            I am truly sorry. 🥺❤️
+        </p>
+
+        <p>
+            I wish I had always listened with patience,
+            understood your situation better, and given you
+            the peace you deserved. I cannot change the past,
+            but I can learn from it and become a better person.
+        </p>
+
+        <p>
+            Adunni, you are not just a name to me.
+            You are someone whose smile can brighten my day,
+            whose happiness matters to me, and whose presence
+            has left beautiful memories in my heart. 🌹💗
+        </p>
+
+        <p>
+            I miss the little things. I miss talking with you.
+            I miss laughing with you. I miss those moments when
+            everything felt simple and we could just enjoy
+            each other's company. 🫂💕
+        </p>
+
+        <p>
+            And yes, Adunni, <strong>I MISS YOU. 😭❤️</strong>
+            More than these words can properly explain.
+        </p>
+
+        <p>
+            I am not writing this to pressure you or make you
+            feel that you owe me anything. I simply want you
+            to know what is in my heart.
+        </p>
+
+        <p>
+            You deserve to feel respected, appreciated,
+            understood, and cared for. You deserve kindness
+            not only in words, but also in actions.
+        </p>
+
+        <p>
+            If life gives us an opportunity to understand
+            each other better, I would appreciate that chance.
+            Whatever happens, I genuinely wish you happiness,
+            success in your studies, peace of mind,
+            and beautiful things in your life. ❤️🌷
+        </p>
+
+        <p>
+            Thank you for the memories, the smiles,
+            the conversations, and the moments that became
+            special to me.
+        </p>
+
+        <p>
+            <strong>
+                Adunni, you are special to me, and I wanted
+                you to know that. ❤️🥹💋
+            </strong>
+        </p>
+
+        <p>With sincerity, from my heart. 💌❤️</p>
+    </div>
+</section>
+
+<section>
+    <h2>🥹 Yes, Adunni... I Miss You!</h2>
+
+    <div class="card">
+        <div style="font-size:55px">🫂❤️🥺</div>
+
+        <p>
+            I miss your presence, your smile, our conversations,
+            and the little moments that meant more to me
+            than I sometimes knew how to express.
+        </p>
+
+        <p>
+            Sometimes, a person becomes part of your everyday
+            thoughts without even trying. You became someone
+            I cared about deeply, Adunni. 💗
+        </p>
+
+        <button onclick="reveal('miss')">
+            Read My Secret Message 💌
+        </button>
+
+        <div id="miss" class="hidden-message">
+            Adunni, if I could send you one thing through this
+            screen, it would be a warm hug and a sincere reminder
+            that you matter. 🫂❤️
+
+            <p>
+                I hope this message brings a little smile
+                to your face today. 🥹💋
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="pink-section">
+    <h2>🌹 Things I Want You To Know</h2>
+
+    <div class="card">
+        <p>❤️ Your happiness matters.</p>
+        <p>🥹 Your feelings deserve to be understood.</p>
+        <p>🌷 You deserve patience and kindness.</p>
+        <p>💖 Your dreams and future are important.</p>
+        <p>🫂 You deserve to feel respected and appreciated.</p>
+        <p>✨ You have your own beautiful qualities.</p>
+
+        <button onclick="reveal('special')">
+            One More Thing, Adunni 💕
+        </button>
+
+        <div id="special" class="hidden-message">
+            You don't have to be perfect to be appreciated.
+            You don't have to pretend to be happy every day.
+            I hope life gives you countless reasons to smile,
+            strength when things are difficult, and people
+            who treat your heart with care. 🌹❤️
+
+            <p>Keep shining, my special Adunni. ✨💕</p>
+        </div>
+    </div>
+</section>
+
+<section>
+    <h2>🥺 From Someone Who Cares</h2>
+
+    <div class="card">
+        <p>
+            If I could go back and handle certain moments
+            differently, I would choose more patience,
+            more understanding, and better communication.
+        </p>
+
+        <p>
+            I know an apology is only a beginning.
+            Real change takes effort, consistency,
+            and actions that match the words.
+        </p>
+
+        <p>
+            I am sorry for the ways I may have made things
+            difficult for you. I hope that, with time,
+            the hurt can give way to peace. ❤️
+        </p>
+
+        <button onclick="reveal('apology')">
+            Read My Heartfelt Apology 🥺
+        </button>
+
+        <div id="apology" class="hidden-message">
+            Adunni, I am genuinely sorry for the times
+            I failed to understand you.
+
+            <p>
+                I should have listened better instead of
+                allowing misunderstandings to grow.
+                I cannot ask you to forget how you felt,
+                but I can acknowledge that your feelings matter.
+            </p>
+
+            <p>
+                I wish you peace, happiness, and nothing
+                but good things. ❤️🌷
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="white-section">
+    <h2>💖 A Little Love Surprise</h2>
+
+    <div class="card">
+        <p>
+            Adunni, there is one more message waiting
+            for you. Are you ready? 🥹💌
+        </p>
+
+        <button onclick="reveal('surprise')">
+            Open Your Surprise 🎁❤️
+        </button>
+
+        <div id="surprise" class="hidden-message">
+            <div style="font-size:50px">💖🌹💋</div>
+
+            <h2 style="color:#d4145a">YOU ARE SPECIAL, ADUNNI!</h2>
+
+            <p>
+                I hope you never forget how deserving you are
+                of happiness, respect, peace, and genuine care.
+            </p>
+
+            <p>
+                If you ever remember me, I hope you can also
+                remember some of the good moments we shared.
+            </p>
+
+            <p>
+                And if you smile while reading this,
+                then this little website has already
+                done something beautiful. 🥹❤️
+            </p>
+
+            <p>
+                <strong>Sending you warmth and a big hug. 🫂💕</strong>
+            </p>
+        </div>
+    </div>
+</section>
+
+<section>
+    <h2>❤️ One Last Thing...</h2>
+
+    <p>
+        Some feelings are difficult to explain,
+        so I made this little page to express mine.
+    </p>
+
+    <p>
+        No pressure. No expectations.
+        Just a sincere message from my heart to yours. 💌
+    </p>
+
+    <div style="font-size:60px">❤️🥹🌹💋</div>
+
+    <h2>Thank You, Adunni. 💖</h2>
+
+    <p>
+        I hope your days are filled with beautiful things
+        and your heart always finds reasons to smile. ✨
+    </p>
+</section>
+
+<div class="footer">
+    <p>Made with ❤️ for Adunni.</p>
+    <p>🌹 A little page, with a lot of heartfelt words. 🌹</p>
 </div>
+
 <script>
-function openLetter(){start.classList.add('hide');letter.classList.remove('hide');}
-function surprise(){document.getElementById('surprise').classList.remove('hide');for(let i=0;i<18;i++){let s=document.createElement('span');s.className='float';s.textContent=['❤️','💗','✨','🥹'][i%4];s.style.left=Math.random()*100+'%';s.style.animationDelay=Math.random()*2+'s';document.body.appendChild(s)}}
-</script></body></html>
+function reveal(id) {
+    const element = document.getElementById(id);
+
+    if (element.style.display === "block") {
+        element.style.display = "none";
+    } else {
+        element.style.display = "block";
+    }
+}
+
+function createHeart() {
+    const heart = document.createElement("div");
+
+    heart.className = "floating-heart";
+
+    const hearts = ["❤️", "💕", "💖", "💗", "💘", "💋", "🌹"];
+
+    heart.textContent = hearts[
+        Math.floor(Math.random() * hearts.length)
+    ];
+
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (16 + Math.random() * 20) + "px";
+    heart.style.animationDuration = (5 + Math.random() * 4) + "s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 9000);
+}
+
+setInterval(createHeart, 650);
+</script>
+
+</body>
+</html>
